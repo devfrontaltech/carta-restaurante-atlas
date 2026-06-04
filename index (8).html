@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAREA · Carta Mediterránea</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#f8f5ef;
+--card:#ffffff;
+--text:#141414;
+--muted:#6f6f6f;
+--line:#e8e1d7;
+--accent:#d46f3d;
+--radius:24px;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+background:
+linear-gradient(
+rgba(0,0,0,.45),
+rgba(0,0,0,.45)
+),
+url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=2000&q=80');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+}
+
+.hero-content{
+max-width:800px;
+color:white;
+}
+
+.hero small{
+letter-spacing:.4em;
+text-transform:uppercase;
+opacity:.9;
+}
+
+.hero h1{
+font-size:clamp(4rem,10vw,8rem);
+font-weight:800;
+margin:20px 0;
+}
+
+.hero p{
+font-size:1.2rem;
+max-width:600px;
+margin:auto;
+line-height:1.8;
+opacity:.9;
+}
+
+nav{
+position:sticky;
+top:0;
+background:rgba(248,245,239,.95);
+backdrop-filter:blur(12px);
+border-bottom:1px solid var(--line);
+z-index:100;
+}
+
+.nav-inner{
+display:flex;
+justify-content:flex-start;
+gap:40px;
+padding:22px;
+overflow-x:auto;
+overflow-y:hidden;
+white-space:nowrap;
+scrollbar-width:none;
+}
+
+.nav-inner::-webkit-scrollbar{
+display:none;
+}
+
+.nav-inner a{
+flex-shrink:0;
+}
+
+.nav-inner a{
+text-decoration:none;
+color:var(--text);
+font-size:.9rem;
+font-weight:600;
+letter-spacing:.15em;
+text-transform:uppercase;
+}
+
+.container{
+max-width:1300px;
+margin:auto;
+padding:80px 30px;
+}
+
+.section{
+margin-bottom:120px;
+}
+
+.section-title{
+display:flex;
+align-items:center;
+gap:30px;
+margin-bottom:60px;
+}
+
+.section-title h2{
+font-size:3rem;
+font-weight:800;
+white-space:nowrap;
+}
+
+.section-title::after{
+content:'';
+height:1px;
+background:var(--line);
+flex:1;
+}
+
+.subsection-title{
+font-size:1.2rem;
+font-weight:700;
+letter-spacing:.1em;
+text-transform:uppercase;
+color:var(--muted);
+margin:50px 0 30px;
+padding-bottom:12px;
+border-bottom:1px solid var(--line);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:35px;
+}
+
+.card{
+background:var(--card);
+border-radius:var(--radius);
+overflow:hidden;
+border:1px solid var(--line);
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+display:block;
+}
+
+.content{
+padding:25px;
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:20px;
+margin-bottom:12px;
+}
+
+.name{
+font-size:1.4rem;
+font-weight:700;
+}
+
+.price{
+font-size:1.2rem;
+font-weight:800;
+color:var(--accent);
+white-space:nowrap;
+}
+
+.desc{
+color:var(--muted);
+line-height:1.7;
+margin-bottom:15px;
+}
+
+.tags{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.tag{
+padding:8px 12px;
+background:#f4efe8;
+border-radius:100px;
+font-size:.75rem;
+font-weight:600;
+}
+
+/* ── DRINK LIST ── */
+.drink-list{
+display:flex;
+flex-direction:column;
+gap:0;
+margin-bottom:10px;
+}
+
+.drink-item{
+display:flex;
+align-items:baseline;
+justify-content:space-between;
+padding:18px 0;
+border-bottom:1px solid var(--line);
+gap:12px;
+transition:padding-left .2s ease;
+}
+
+.drink-item:hover{padding-left:8px;}
+.drink-item:last-child{border-bottom:none;}
+
+.drink-left{flex:1;}
+
+.drink-name{
+font-size:1.05rem;
+font-weight:600;
+color:var(--text);
+}
+
+.drink-desc{
+font-size:.82rem;
+color:var(--muted);
+margin-top:3px;
+line-height:1.5;
+}
+
+.drink-dots{
+flex:1;
+border-bottom:1px dotted #d8d0c4;
+margin:0 14px;
+min-width:20px;
+}
+
+.drink-price{
+font-size:1rem;
+font-weight:800;
+color:var(--accent);
+white-space:nowrap;
+}
+
+/* ── NOTE ── */
+.note{
+margin-top:30px;
+padding:20px 24px;
+background:#fff;
+border:1px solid var(--line);
+border-radius:16px;
+font-size:.85rem;
+color:var(--muted);
+line-height:1.7;
+}
+
+.note strong{color:var(--accent);}
+
+.footer{
+padding:80px 20px;
+text-align:center;
+border-top:1px solid var(--line);
+}
+
+.footer h3{
+font-size:2rem;
+margin-bottom:10px;
+}
+
+.footer p{
+color:var(--muted);
+line-height:1.8;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:4rem;
+}
+
+.section-title h2{
+font-size:2rem;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+<div class="hero-content">
+<small>Barcelona · Cocina Mediterránea</small>
+<h1>MAREA</h1>
+<p>
+Producto fresco, recetas contemporáneas y sabores del Mediterráneo reinterpretados para una experiencia gastronómica moderna.
+</p>
+</div>
+</header>
+
+<nav>
+<div class="nav-inner">
+<a href="#tapas">Tapas</a>
+<a href="#bocadillos">Bocadillos</a>
+<a href="#ensaladas">Ensaladas</a>
+<a href="#combinados">Combinados</a>
+<a href="#postres">Postres</a>
+<a href="#bebidas">Bebidas</a>
+<a href="#cafes">Cafés</a>
+<a href="#copas">Copas</a>
+<a href="#vinos">Vinos</a>
+</div>
+</nav>
+
+<main class="container">
+
+<!-- ── TAPAS ── -->
+<section id="tapas" class="section">
+
+<div class="section-title">
+<h2>Tapas</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=1200&q=80" alt="Pimientos de Padrón">
+<div class="content">
+<div class="top">
+<div class="name">Pimientos de Padrón</div>
+<div class="price">4,10 €</div>
+</div>
+<div class="desc">Pimientos de Padrón fritos con sal gruesa. Unos pican y otros no.</div>
+<div class="tags"><span class="tag">Vegano</span><span class="tag">Sin Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=1200&q=80" alt="Patatas Fritas">
+<div class="content">
+<div class="top">
+<div class="name">Patatas Fritas</div>
+<div class="price">4,10 €</div>
+</div>
+<div class="desc">Patatas fritas crujientes, elaboración propia.</div>
+<div class="tags"><span class="tag">Vegano</span><span class="tag">Sin Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=1200&q=80" alt="Bravas Caseras">
+<div class="content">
+<div class="top">
+<div class="name">Bravas Caseras</div>
+<div class="price">5,70 €</div>
+</div>
+<div class="desc">Patatas fritas con salsa brava aparte. Receta casera de la casa.</div>
+<div class="tags"><span class="tag">Vegano</span><span class="tag">Sin Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1528712306091-ed0763094c98?w=1200&q=80" alt="Croquetas de Pollo">
+<div class="content">
+<div class="top">
+<div class="name">Croquetas de Pollo</div>
+<div class="price">7,50 €</div>
+</div>
+<div class="desc">Croquetas caseras de pollo, crujientes por fuera y cremosas por dentro.</div>
+<div class="tags"><span class="tag">Gluten</span><span class="tag">Leche</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=1200&q=80" alt="Nuggets de Pollo">
+<div class="content">
+<div class="top">
+<div class="name">Nuggets de Pollo</div>
+<div class="price">6,30 €</div>
+</div>
+<div class="desc">Nuggets de pollo crujientes servidos con salsa miel y mostaza.</div>
+<div class="tags"><span class="tag">Gluten</span><span class="tag">Mostaza</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="Morros">
+<div class="content">
+<div class="top">
+<div class="name">Morros</div>
+<div class="price">6,50 €</div>
+</div>
+<div class="desc">Morros de cerdo guisados a fuego lento con especias de la casa.</div>
+<div class="tags"><span class="tag">Sin Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=1200&q=80" alt="Pinchos Morunos">
+<div class="content">
+<div class="top">
+<div class="name">Pinchos Morunos</div>
+<div class="price">6,80 €</div>
+</div>
+<div class="desc">Pinchos morunos a la plancha servidos con pan tomate.</div>
+<div class="tags"><span class="tag">Sin Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=1200&q=80" alt="Chistorra">
+<div class="content">
+<div class="top">
+<div class="name">Chistorra</div>
+<div class="price">6,30 €</div>
+</div>
+<div class="desc">Chistorra a la plancha servida con pan tomate.</div>
+<div class="tags"><span class="tag">Sin Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=1200&q=80" alt="Chipirones a la Andaluza">
+<div class="content">
+<div class="top">
+<div class="name">Chipirones a la Andaluza</div>
+<div class="price">7,30 €</div>
+</div>
+<div class="desc">Chipirones rebozados y fritos al estilo andaluz, crujientes y tiernos.</div>
+<div class="tags"><span class="tag">Marisco</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=1200&q=80" alt="Chipirones a la Plancha">
+<div class="content">
+<div class="top">
+<div class="name">Chipirones a la Plancha</div>
+<div class="price">9,50 €</div>
+</div>
+<div class="desc">Chipirones a la plancha con ajo y perejil. Frescos y jugosos.</div>
+<div class="tags"><span class="tag">Marisco</span><span class="tag">Sin Gluten</span><span class="tag">Premium</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604909052743-94e838986d24?w=1200&q=80" alt="Calamares a la Romana">
+<div class="content">
+<div class="top">
+<div class="name">Calamares a la Romana</div>
+<div class="price">7,60 €</div>
+</div>
+<div class="desc">Anillas de calamar rebozadas y fritas, crujientes y doradas.</div>
+<div class="tags"><span class="tag">Marisco</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=1200&q=80" alt="Tapa de Jamón y Queso">
+<div class="content">
+<div class="top">
+<div class="name">Tapa de Jamón y Queso</div>
+<div class="price">13,50 €</div>
+</div>
+<div class="desc">Selección de jamón serrano y queso curado de la casa.</div>
+<div class="tags"><span class="tag">Especial</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=1200&q=80" alt="Patatas Bolsa">
+<div class="content">
+<div class="top">
+<div class="name">Patatas Bolsa</div>
+<div class="price">1,50 €</div>
+</div>
+<div class="desc">Normales, Jamón o Doritos. El aperitivo perfecto.</div>
+<div class="tags"><span class="tag">Snack</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1611250188496-e966043a0629?w=1200&q=80" alt="Olivas Partidas Aliñadas">
+<div class="content">
+<div class="top">
+<div class="name">Olivas Partidas Aliñadas</div>
+<div class="price">1,50 €</div>
+</div>
+<div class="desc">Olivas partidas aliñadas con hierbas y especias de la casa.</div>
+<div class="tags"><span class="tag">Vegano</span><span class="tag">Sin Gluten</span></div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ── BOCADILLOS ── -->
+<section id="bocadillos" class="section">
+
+<div class="section-title">
+<h2>Bocadillos</h2>
+</div>
+
+<!-- FRÍOS -->
+<div class="subsection-title">Bocadillos Fríos</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?w=1200&q=80" alt="Queso">
+<div class="content">
+<div class="top">
+<div class="name">Queso</div>
+<div class="price">4,50 €</div>
+</div>
+<div class="desc">Bocadillo de queso en pan de barra.</div>
+<div class="tags"><span class="tag">Leche</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?w=1200&q=80" alt="Jamón">
+<div class="content">
+<div class="top">
+<div class="name">Jamón</div>
+<div class="price">4,70 €</div>
+</div>
+<div class="desc">Bocadillo de jamón serrano en pan de barra.</div>
+<div class="tags"><span class="tag">Cerdo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=1200&q=80" alt="Fuet">
+<div class="content">
+<div class="top">
+<div class="name">Fuet</div>
+<div class="price">4,20 €</div>
+</div>
+<div class="desc">Bocadillo de fuet catalán en pan de barra.</div>
+<div class="tags"><span class="tag">Cerdo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1558981285-6f0c8c3b8677?w=1200&q=80" alt="Atún">
+<div class="content">
+<div class="top">
+<div class="name">Atún</div>
+<div class="price">4,20 €</div>
+</div>
+<div class="desc">Bocadillo de atún en pan de barra.</div>
+<div class="tags"><span class="tag">Pescado</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1485451456034-3f9391c6f769?w=1200&q=80" alt="Vegetal de Atún">
+<div class="content">
+<div class="top">
+<div class="name">Vegetal de Atún</div>
+<div class="price">4,40 €</div>
+</div>
+<div class="desc">Con huevo, tomate y lechuga. Fresco y completo.</div>
+<div class="tags"><span class="tag">Pescado</span><span class="tag">Huevo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+</div>
+
+<!-- CALIENTES -->
+<div class="subsection-title">Bocadillos Calientes</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=1200&q=80" alt="Bikini">
+<div class="content">
+<div class="top">
+<div class="name">Bikini</div>
+<div class="price">3,60 €</div>
+</div>
+<div class="desc">Sándwich caliente de jamón y queso a la plancha.</div>
+<div class="tags"><span class="tag">Cerdo</span><span class="tag">Leche</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=1200&q=80" alt="Tortilla Francesa">
+<div class="content">
+<div class="top">
+<div class="name">Tortilla Francesa</div>
+<div class="price">4,70 €</div>
+</div>
+<div class="desc">Bocadillo caliente de tortilla francesa.</div>
+<div class="tags"><span class="tag">Huevo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80" alt="Pollo">
+<div class="content">
+<div class="top">
+<div class="name">Pollo</div>
+<div class="price">4,70 €</div>
+</div>
+<div class="desc">Bocadillo caliente de pollo a la plancha.</div>
+<div class="tags"><span class="tag">Pollo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=1200&q=80" alt="Vegetal de Pollo">
+<div class="content">
+<div class="top">
+<div class="name">Vegetal de Pollo</div>
+<div class="price">4,80 €</div>
+</div>
+<div class="desc">Bocadillo caliente de pollo con verduras frescas.</div>
+<div class="tags"><span class="tag">Pollo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="Lomo">
+<div class="content">
+<div class="top">
+<div class="name">Lomo</div>
+<div class="price">5,00 €</div>
+</div>
+<div class="desc">Bocadillo caliente de lomo de cerdo a la plancha.</div>
+<div class="tags"><span class="tag">Cerdo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&q=80" alt="Serranito">
+<div class="content">
+<div class="top">
+<div class="name">Serranito</div>
+<div class="price">6,50 €</div>
+</div>
+<div class="desc">Lomo, jamón serrano y pimiento verde frito. El clásico andaluz.</div>
+<div class="tags"><span class="tag">Cerdo</span><span class="tag">Gluten</span><span class="tag">Especial</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=1200&q=80" alt="Pinchos Morunos bocadillo">
+<div class="content">
+<div class="top">
+<div class="name">Pinchos Morunos</div>
+<div class="price">5,10 €</div>
+</div>
+<div class="desc">Bocadillo caliente de pinchos morunos especiados.</div>
+<div class="tags"><span class="tag">Cerdo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=1200&q=80" alt="Bacon">
+<div class="content">
+<div class="top">
+<div class="name">Bacon</div>
+<div class="price">4,90 €</div>
+</div>
+<div class="desc">Bocadillo caliente de bacon crujiente a la plancha.</div>
+<div class="tags"><span class="tag">Cerdo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=1200&q=80" alt="Salchicha">
+<div class="content">
+<div class="top">
+<div class="name">Salchicha</div>
+<div class="price">4,90 €</div>
+</div>
+<div class="desc">Bocadillo caliente de salchicha fresca a la plancha.</div>
+<div class="tags"><span class="tag">Cerdo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80" alt="Butifarra">
+<div class="content">
+<div class="top">
+<div class="name">Butifarra</div>
+<div class="price">5,10 €</div>
+</div>
+<div class="desc">Bocadillo caliente de butifarra catalana a la plancha.</div>
+<div class="tags"><span class="tag">Cerdo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=1200&q=80" alt="Chistorra bocadillo">
+<div class="content">
+<div class="top">
+<div class="name">Chistorra</div>
+<div class="price">5,10 €</div>
+</div>
+<div class="desc">Bocadillo caliente de chistorra a la plancha.</div>
+<div class="tags"><span class="tag">Cerdo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&q=80" alt="Hamburguesa">
+<div class="content">
+<div class="top">
+<div class="name">Hamburguesa</div>
+<div class="price">5,30 €</div>
+</div>
+<div class="desc">Bocadillo caliente de hamburguesa de ternera.</div>
+<div class="tags"><span class="tag">Ternera</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+</div>
+
+<div class="note">
+<strong>Suplementos</strong> — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €</strong> · Pan Tomate: <strong>1,00 €</strong> · Pan Sin Gluten: <strong>1,50 €</strong>
+</div>
+
+</section>
+
+<!-- ── ENSALADAS ── -->
+<section id="ensaladas" class="section">
+
+<div class="section-title">
+<h2>Ensaladas</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80" alt="Ensalada de Atún">
+<div class="content">
+<div class="top">
+<div class="name">Ensalada de Atún</div>
+<div class="price">5,80 €</div>
+</div>
+<div class="desc">Ensalada fresca con atún, tomate, lechuga y cebolla.</div>
+<div class="tags"><span class="tag">Pescado</span><span class="tag">Sin Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=1200&q=80" alt="Ensalada Griega">
+<div class="content">
+<div class="top">
+<div class="name">Ensalada Griega</div>
+<div class="price">8,10 €</div>
+</div>
+<div class="desc">Tomate, pepino, cebolla, aceituna negra y queso feta.</div>
+<div class="tags"><span class="tag">Vegetariano</span><span class="tag">Sin Gluten</span></div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ── COMBINADOS ── -->
+<section id="combinados" class="section">
+
+<div class="section-title">
+<h2>Platos Combinados</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=1200&q=80" alt="Tortilla Francesa">
+<div class="content">
+<div class="top">
+<div class="name">Tortilla Francesa</div>
+<div class="price">7,30 €</div>
+</div>
+<div class="desc">Con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Huevo</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604909052743-94e838986d24?w=1200&q=80" alt="Calamares a la Romana">
+<div class="content">
+<div class="top">
+<div class="name">Calamares a la Romana</div>
+<div class="price">11,10 €</div>
+</div>
+<div class="desc">Con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Marisco</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=1200&q=80" alt="Chipirones a la Plancha">
+<div class="content">
+<div class="top">
+<div class="name">Chipirones a la Plancha</div>
+<div class="price">15,50 €</div>
+</div>
+<div class="desc">Con ajo y perejil, patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Marisco</span><span class="tag">Estrella</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=1200&q=80" alt="Chipirones a la Andaluza">
+<div class="content">
+<div class="top">
+<div class="name">Chipirones a la Andaluza</div>
+<div class="price">13,30 €</div>
+</div>
+<div class="desc">Con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Marisco</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80" alt="Pollo">
+<div class="content">
+<div class="top">
+<div class="name">Pollo</div>
+<div class="price">8,20 €</div>
+</div>
+<div class="desc">Pollo a la plancha con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Pollo</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=1200&q=80" alt="Nuggets">
+<div class="content">
+<div class="top">
+<div class="name">Nuggets</div>
+<div class="price">9,20 €</div>
+</div>
+<div class="desc">Con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Pollo</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80" alt="Lomo">
+<div class="content">
+<div class="top">
+<div class="name">Lomo</div>
+<div class="price">9,30 €</div>
+</div>
+<div class="desc">Lomo de cerdo a la plancha con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Cerdo</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=1200&q=80" alt="Pinchos Morunos">
+<div class="content">
+<div class="top">
+<div class="name">Pinchos Morunos</div>
+<div class="price">9,80 €</div>
+</div>
+<div class="desc">Con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Cerdo</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=1200&q=80" alt="Salchicha">
+<div class="content">
+<div class="top">
+<div class="name">Salchicha</div>
+<div class="price">9,30 €</div>
+</div>
+<div class="desc">Salchicha fresca a la plancha con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Cerdo</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80" alt="Butifarra">
+<div class="content">
+<div class="top">
+<div class="name">Butifarra</div>
+<div class="price">10,30 €</div>
+</div>
+<div class="desc">Butifarra catalana a la plancha con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Cerdo</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=1200&q=80" alt="Chistorra">
+<div class="content">
+<div class="top">
+<div class="name">Chistorra</div>
+<div class="price">9,50 €</div>
+</div>
+<div class="desc">Chistorra a la plancha con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Cerdo</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&q=80" alt="Hamburguesa">
+<div class="content">
+<div class="top">
+<div class="name">Hamburguesa</div>
+<div class="price">12,30 €</div>
+</div>
+<div class="desc">Hamburguesa de ternera con patatas fritas, huevo frito y ensalada.</div>
+<div class="tags"><span class="tag">Ternera</span></div>
+</div>
+</div>
+
+</div>
+
+<div class="note">
+<strong>Todos los platos llevan patatas fritas, huevo frito y ensalada.</strong><br>
+Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €</strong> · Pan Tomate: <strong>1,00 €</strong> · Pan Sin Gluten: <strong>1,50 €</strong>
+</div>
+
+</section>
+
+<!-- ── POSTRES ── -->
+<section id="postres" class="section">
+
+<div class="section-title">
+<h2>Postres</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=1200&q=80" alt="Tarta Santiago">
+<div class="content">
+<div class="top">
+<div class="name">Tarta Santiago</div>
+<div class="price">3,00 €</div>
+</div>
+<div class="desc">Tarta tradicional gallega de almendra con azúcar glas.</div>
+<div class="tags"><span class="tag">Frutos Secos</span><span class="tag">Huevo</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?w=1200&q=80" alt="Tarta Manzana">
+<div class="content">
+<div class="top">
+<div class="name">Tarta Manzana</div>
+<div class="price">3,00 €</div>
+</div>
+<div class="desc">Tarta casera de manzana con canela y masa crujiente.</div>
+<div class="tags"><span class="tag">Gluten</span><span class="tag">Leche</span></div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=1200&q=80" alt="Tarta Queso">
+<div class="content">
+<div class="top">
+<div class="name">Tarta Queso</div>
+<div class="price">3,50 €</div>
+</div>
+<div class="desc">Tarta de queso cremosa, tipo cheesecake, con base de galleta.</div>
+<div class="tags"><span class="tag">Leche</span><span class="tag">Gluten</span></div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ── BEBIDAS ── -->
+<section id="bebidas" class="section">
+
+<div class="section-title">
+<h2>Bebidas</h2>
+</div>
+
+<div class="subsection-title">Aguas y Refrescos</div>
+<div class="drink-list">
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Agua Grande Viladrau 1,5 l</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,20 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Agua Pequeña Font Vella 0,5 l</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">1,30 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Agua Vichy 0,33 l</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,10 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Aquarius, Coca-Cola, Fanta, Nestea... 0,33 l</div>
+<div class="drink-desc">Aquarius (Limón, Naranja o Melocotón Rojo), Coca-Cola, Coca-Cola Zero, Nestea, Fuse Tea, Fanta Limón o Naranja</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,30 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Refrescos 0,2 l</div>
+<div class="drink-desc">Coca-Cola, Coca-Cola Zero Zero, Bitter Kass, Tónica, Zumos varios, Limonada Granini, Appletiser</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,10 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Red Bull</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">3,10 €</span>
+</div>
+</div>
+
+<div class="subsection-title">Cervezas</div>
+<div class="drink-list">
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Victoria 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,00 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">San Miguel 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,10 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Estrella Damm (Quinto / Mediana)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">1,90 € / 2,20 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Voll Damm 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Alhambra 1925 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,40 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">La Milnueve 1906 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,40 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Heineken 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,40 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Corona 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Daura Damm Gluten Free 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,40 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Estrella Damm (Caña / Copa / Jarra)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">1,80 € / 2,10 € / 3,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Turia (Caña / Copa / Jarra)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">1,90 € / 2,20 € / 3,60 €</span>
+</div>
+</div>
+
+</section>
+
+<!-- ── CAFÉS ── -->
+<section id="cafes" class="section">
+
+<div class="section-title">
+<h2>Cafés e Infusiones</h2>
+</div>
+
+<div class="drink-list">
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Café con Leche (Normal o Descafeinado)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">1,70 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Cortado (Normal o Descafeinado)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">1,60 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Café Solo (Normal o Descafeinado)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">1,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Carajillo</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,40 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">ColaCao</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">1,80 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Cacaolat</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,00 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Infusiones</div>
+<div class="drink-desc">Manzanilla, Tila, Menta-Poleo, Jengibre-Limón, Frutas del Bosque, Mediterráneo, Menta Árabe, English Breakfast</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">1,90 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Con hielo</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">+ 0,20 €</span>
+</div>
+</div>
+
+</section>
+
+<!-- ── COPAS ── -->
+<section id="copas" class="section">
+
+<div class="section-title">
+<h2>Combinados y Copas</h2>
+</div>
+
+<div class="drink-list">
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Chupito Sin Alcohol (Manzana)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">1,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Licor con Alcohol (Chupito / Copa / Tubo)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,00 € / 3,00 € / 4,00 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Whisky (Chupito / Copa)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,50 € / 3,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Combinado Licor</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">7,00 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Combinado Whisky</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">7,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Suplemento Red Bull</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">+ 1,00 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Mojito</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">5,00 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Tinto de Verano</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">3,00 €</span>
+</div>
+</div>
+
+</section>
+
+<!-- ── VINOS ── -->
+<section id="vinos" class="section">
+
+<div class="section-title">
+<h2>Vinos y Cavas</h2>
+</div>
+
+<div class="drink-list">
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Vino Blanco Laus</div>
+<div class="drink-desc">Botella / Copa</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">11,50 € / 2,00 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Vino Tinto Laus</div>
+<div class="drink-desc">Botella / Copa</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">12,50 € / 2,10 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Vino Tinto Reserva Murillo Viteri</div>
+<div class="drink-desc">Botella / Copa</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">15,00 € / 3,10 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Vino Tinto Ribera del Duero Portia</div>
+<div class="drink-desc">Botella</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">14,00 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Vino Porto Offley</div>
+<div class="drink-desc">Botella / Copa</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">21,00 € / 4,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Cava Castell D'Or</div>
+<div class="drink-desc">Botella</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">11,00 €</span>
+</div>
+</div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+<h3>MAREA</h3>
+<p>
+Passeig Marítim 128 · Barcelona<br>
+Reservas: +34 931 000 000<br>
+hola@marearestaurante.com
+</p>
+</footer>
+
+</body>
+</html>
