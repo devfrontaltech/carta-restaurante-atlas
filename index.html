@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Restaurante Atlas</title>
-
+ 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+ 
 <style>
-
+ 
 :root{
 --bg:#f8f5ef;
 --card:#ffffff;
@@ -18,20 +18,20 @@
 --accent:#d46f3d;
 --radius:24px;
 }
-
+ 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
-
+ 
 body{
 font-family:'Inter',sans-serif;
 background:var(--bg);
 color:var(--text);
 overflow-x:hidden;
 }
-
+ 
 .hero{
 height:100vh;
 background:
@@ -48,24 +48,24 @@ justify-content:center;
 text-align:center;
 padding:40px;
 }
-
+ 
 .hero-content{
 max-width:800px;
 color:white;
 }
-
+ 
 .hero small{
 letter-spacing:.4em;
 text-transform:uppercase;
 opacity:.9;
 }
-
+ 
 .hero h1{
 font-size:clamp(4rem,10vw,8rem);
 font-weight:800;
 margin:20px 0;
 }
-
+ 
 .hero p{
 font-size:1.2rem;
 max-width:600px;
@@ -73,7 +73,7 @@ margin:auto;
 line-height:1.8;
 opacity:.9;
 }
-
+ 
 nav{
 position:sticky;
 top:0;
@@ -82,7 +82,7 @@ backdrop-filter:blur(12px);
 border-bottom:1px solid var(--line);
 z-index:100;
 }
-
+ 
 .nav-inner{
 display:flex;
 justify-content:flex-start;
@@ -93,15 +93,15 @@ overflow-y:hidden;
 white-space:nowrap;
 scrollbar-width:none;
 }
-
+ 
 .nav-inner::-webkit-scrollbar{
 display:none;
 }
-
+ 
 .nav-inner a{
 flex-shrink:0;
 }
-
+ 
 .nav-inner a{
 text-decoration:none;
 color:var(--text);
@@ -110,37 +110,37 @@ font-weight:600;
 letter-spacing:.15em;
 text-transform:uppercase;
 }
-
+ 
 .container{
 max-width:1300px;
 margin:auto;
 padding:80px 30px;
 }
-
+ 
 .section{
 margin-bottom:120px;
 }
-
+ 
 .section-title{
 display:flex;
 align-items:center;
 gap:30px;
 margin-bottom:60px;
 }
-
+ 
 .section-title h2{
 font-size:3rem;
 font-weight:800;
 white-space:nowrap;
 }
-
+ 
 .section-title::after{
 content:'';
 height:1px;
 background:var(--line);
 flex:1;
 }
-
+ 
 .subsection-title{
 font-size:1.2rem;
 font-weight:700;
@@ -151,13 +151,13 @@ margin:50px 0 30px;
 padding-bottom:12px;
 border-bottom:1px solid var(--line);
 }
-
+ 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
 gap:35px;
 }
-
+ 
 .card{
 background:var(--card);
 border-radius:var(--radius);
@@ -165,23 +165,23 @@ overflow:hidden;
 border:1px solid var(--line);
 transition:.35s;
 }
-
+ 
 .card:hover{
 transform:translateY(-8px);
 box-shadow:0 20px 50px rgba(0,0,0,.08);
 }
-
+ 
 .card img{
 width:100%;
 height:250px;
 object-fit:cover;
 display:block;
 }
-
+ 
 .content{
 padding:25px;
 }
-
+ 
 .top{
 display:flex;
 justify-content:space-between;
@@ -189,31 +189,31 @@ align-items:flex-start;
 gap:20px;
 margin-bottom:12px;
 }
-
+ 
 .name{
 font-size:1.4rem;
 font-weight:700;
 }
-
+ 
 .price{
 font-size:1.2rem;
 font-weight:800;
 color:var(--accent);
 white-space:nowrap;
 }
-
+ 
 .desc{
 color:var(--muted);
 line-height:1.7;
 margin-bottom:15px;
 }
-
+ 
 .tags{
 display:flex;
 gap:10px;
 flex-wrap:wrap;
 }
-
+ 
 .tag{
 padding:8px 12px;
 background:#f4efe8;
@@ -221,7 +221,7 @@ border-radius:100px;
 font-size:.75rem;
 font-weight:600;
 }
-
+ 
 /* ── DRINK LIST ── */
 .drink-list{
 display:flex;
@@ -229,7 +229,7 @@ flex-direction:column;
 gap:0;
 margin-bottom:10px;
 }
-
+ 
 .drink-item{
 display:flex;
 align-items:baseline;
@@ -239,39 +239,39 @@ border-bottom:1px solid var(--line);
 gap:12px;
 transition:padding-left .2s ease;
 }
-
+ 
 .drink-item:hover{padding-left:8px;}
 .drink-item:last-child{border-bottom:none;}
-
+ 
 .drink-left{flex:1;}
-
+ 
 .drink-name{
 font-size:1.05rem;
 font-weight:600;
 color:var(--text);
 }
-
+ 
 .drink-desc{
 font-size:.82rem;
 color:var(--muted);
 margin-top:3px;
 line-height:1.5;
 }
-
+ 
 .drink-dots{
 flex:1;
 border-bottom:1px dotted #d8d0c4;
 margin:0 14px;
 min-width:20px;
 }
-
+ 
 .drink-price{
 font-size:1rem;
 font-weight:800;
 color:var(--accent);
 white-space:nowrap;
 }
-
+ 
 /* ── NOTE ── */
 .note{
 margin-top:30px;
@@ -283,46 +283,46 @@ font-size:.85rem;
 color:var(--muted);
 line-height:1.7;
 }
-
+ 
 .note strong{color:var(--accent);}
-
+ 
 .footer{
 padding:80px 20px;
 text-align:center;
 border-top:1px solid var(--line);
 }
-
+ 
 .footer h3{
 font-size:2rem;
 margin-bottom:10px;
 }
-
+ 
 .footer p{
 color:var(--muted);
 line-height:1.8;
 }
-
+ 
 @media(max-width:768px){
-
+ 
 .hero h1{
 font-size:4rem;
 }
-
+ 
 .section-title h2{
 font-size:2rem;
 }
-
+ 
 .grid{
 grid-template-columns:1fr;
 }
-
+ 
 }
-
+ 
 </style>
 </head>
-
+ 
 <body>
-
+ 
 <header class="hero">
 <div class="hero-content">
 <small>Barcelona</small>
@@ -332,7 +332,7 @@ Un mundo de sabores
 </p>
 </div>
 </header>
-
+ 
 <nav>
 <div class="nav-inner">
 <a href="#tapas">Tapas</a>
@@ -346,128 +346,128 @@ Un mundo de sabores
 <a href="#vinos">Vinos</a>
 </div>
 </nav>
-
+ 
 <main class="container">
-
+ 
 <!-- ── TAPAS ── -->
 <section id="tapas" class="section">
-
+ 
 <div class="section-title">
 <h2>Tapas</h2>
 </div>
-
+ 
 <div class="grid">
-
+ 
 <div class="card">
 <img src="images/pimientospadron.jpg" alt="Pimientos de Padrón">
 <div class="content">
 <div class="top">
 <div class="name">Pimientos de Padrón</div>
-<div class="price">4,10 €</div>
+<div class="price">4,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=1200&q=80" alt="Patatas Fritas">
 <div class="content">
 <div class="top">
 <div class="name">Patatas Fritas</div>
-<div class="price">4,10 €</div>
+<div class="price">4,40 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/bravas.jpg" alt="Bravas Caseras">
 <div class="content">
 <div class="top">
 <div class="name">Bravas Caseras</div>
-<div class="price">5,70 €</div>
+<div class="price">6,30 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/croquetaspollo.jpg" alt="Croquetas de Pollo">
 <div class="content">
 <div class="top">
 <div class="name">Croquetas de Pollo</div>
-<div class="price">7,50 €</div>
+<div class="price">8,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=1200&q=80" alt="Nuggets de Pollo">
 <div class="content">
 <div class="top">
 <div class="name">Nuggets de Pollo</div>
-<div class="price">6,30 €</div>
+<div class="price">7,20 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/morro.jpg" alt="Morros">
 <div class="content">
 <div class="top">
 <div class="name">Morros</div>
-<div class="price">6,50 €</div>
+<div class="price">7,80 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/pinchomoruno.jpg" alt="Pinchos Morunos">
 <div class="content">
 <div class="top">
 <div class="name">Pinchos Morunos</div>
-<div class="price">6,80 €</div>
+<div class="price">7,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/chistorra.jpg" alt="Chistorra">
 <div class="content">
 <div class="top">
 <div class="name">Chistorra</div>
-<div class="price">6,30 €</div>
+<div class="price">7,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/chipironesandaluza.jpg" alt="Chipirones a la Andaluza">
 <div class="content">
 <div class="top">
 <div class="name">Chipirones a la Andaluza</div>
-<div class="price">7,30 €</div>
+<div class="price">8,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=1200&q=80" alt="Chipirones a la Plancha">
 <div class="content">
 <div class="top">
 <div class="name">Chipirones a la Plancha</div>
-<div class="price">9,50 €</div>
+<div class="price">10,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/calamaresromana.jpg" alt="Calamares a la Romana">
 <div class="content">
 <div class="top">
 <div class="name">Calamares a la Romana</div>
-<div class="price">7,60 €</div>
+<div class="price">7,90 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/tapajq.jpg" alt="Tapa de Jamón y Queso">
 <div class="content">
@@ -477,7 +477,7 @@ Un mundo de sabores
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/chips.jpg" alt="Patatas Bolsa">
 <div class="content">
@@ -487,7 +487,7 @@ Un mundo de sabores
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/olivas.jpg" alt="Olivas Partidas Aliñadas">
 <div class="content">
@@ -497,424 +497,484 @@ Un mundo de sabores
 </div>
 </div>
 </div>
-
+ 
+<div class="card">
+<img src="images/morro.jpg" alt="½ Morros">
+<div class="content">
+<div class="top">
+<div class="name">½ Morros</div>
+<div class="price">3,90 €</div>
+</div>
+</div>
+</div>
+ 
+<div class="card">
+<img src="images/bravas.jpg" alt="½ Patatas Bravas">
+<div class="content">
+<div class="top">
+<div class="name">½ Patatas Bravas</div>
+<div class="price">3,15 €</div>
+</div>
+</div>
+</div>
+ 
+<div class="card">
+<img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=1200&q=80" alt="Tapa Queso Manchego">
+<div class="content">
+<div class="top">
+<div class="name">Tapa Queso Manchego</div>
+<div class="price">10,20 €</div>
+</div>
+</div>
+</div>
+ 
 </div>
 </section>
-
+ 
 <!-- ── BOCADILLOS ── -->
 <section id="bocadillos" class="section">
-
+ 
 <div class="section-title">
 <h2>Bocadillos</h2>
 </div>
-
+ 
 <!-- FRÍOS -->
 <div class="subsection-title">Bocadillos Fríos</div>
 <div class="grid">
-
+ 
 <div class="card">
 <img src="images/bocadilloqueso.jpg" alt="Queso">
 <div class="content">
 <div class="top">
 <div class="name">Queso</div>
-<div class="price">4,50 €</div>
+<div class="price">5,00 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/bocadillojamon.jpg" alt="Jamón">
 <div class="content">
 <div class="top">
 <div class="name">Jamón</div>
-<div class="price">4,70 €</div>
+<div class="price">5,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/bocadillofuet.jpg" alt="Fuet">
 <div class="content">
 <div class="top">
 <div class="name">Fuet</div>
-<div class="price">4,20 €</div>
+<div class="price">4,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/atun.jpg" alt="Atún">
 <div class="content">
 <div class="top">
 <div class="name">Atún</div>
-<div class="price">4,20 €</div>
+<div class="price">4,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1485451456034-3f9391c6f769?w=1200&q=80" alt="Vegetal de Atún">
 <div class="content">
 <div class="top">
 <div class="name">Vegetal de Atún (Con huevo, tomate y lechuga)</div>
-<div class="price">4,40 €</div>
+<div class="price">5,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 </div>
-
+ 
 <!-- CALIENTES -->
 <div class="subsection-title">Bocadillos Calientes</div>
 <div class="grid">
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=1200&q=80" alt="Bikini">
 <div class="content">
 <div class="top">
 <div class="name">Bikini</div>
-<div class="price">3,60 €</div>
+<div class="price">3,80 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/bocadillotortillafrancesa.jpg" alt="Tortilla Francesa">
 <div class="content">
 <div class="top">
 <div class="name">Tortilla Francesa</div>
-<div class="price">4,70 €</div>
+<div class="price">5,30 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/bocadillopollo.jpg" alt="Pollo">
 <div class="content">
 <div class="top">
 <div class="name">Pollo</div>
-<div class="price">4,70 €</div>
+<div class="price">5,20 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/vegetaldepollo.jpg" alt="Vegetal de Pollo">
 <div class="content">
 <div class="top">
 <div class="name">Vegetal de Pollo</div>
-<div class="price">4,80 €</div>
+<div class="price">5,80 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/bocadillolomo.jpg" alt="Lomo">
 <div class="content">
 <div class="top">
 <div class="name">Lomo</div>
-<div class="price">5,00 €</div>
+<div class="price">5,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/serranito.webp" alt="Serranito">
 <div class="content">
 <div class="top">
 <div class="name">Serranito</div>
-<div class="price">6,50 €</div>
+<div class="price">7,80 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/pinchomoruno.jpg" alt="Pinchos Morunos bocadillo">
 <div class="content">
 <div class="top">
 <div class="name">Pinchos Morunos</div>
-<div class="price">5,10 €</div>
+<div class="price">6,00 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/bocadillobacon.jpg" alt="Bacon">
 <div class="content">
 <div class="top">
 <div class="name">Bacon</div>
-<div class="price">4,90 €</div>
+<div class="price">5,30 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/bocadillosalchicha.jpg" alt="Salchicha">
 <div class="content">
 <div class="top">
 <div class="name">Salchicha</div>
-<div class="price">4,90 €</div>
+<div class="price">5,30 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/bocadillobutifarra.jpg" alt="Butifarra">
 <div class="content">
 <div class="top">
 <div class="name">Butifarra</div>
-<div class="price">5,10 €</div>
+<div class="price">5,60 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/chistorra.jpg" alt="Chistorra bocadillo">
 <div class="content">
 <div class="top">
 <div class="name">Chistorra</div>
-<div class="price">5,10 €</div>
+<div class="price">5,60 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&q=80" alt="Hamburguesa">
 <div class="content">
 <div class="top">
 <div class="name">Hamburguesa</div>
-<div class="price">5,30 €</div>
+<div class="price">5,70 €</div>
 </div>
 </div>
 </div>
-
+ 
+<div class="card">
+<img src="images/bocadillobacon.jpg" alt="Panceta">
+<div class="content">
+<div class="top">
+<div class="name">Panceta</div>
+<div class="price">6,10 €</div>
 </div>
-
+</div>
+</div>
+ 
+</div>
+ 
 <div class="note">
 <strong>Suplementos</strong> — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €</strong> · Pan Tomate: <strong>1,00 €</strong> · Pan Sin Gluten: <strong>1,50 €</strong>
 </div>
-
+ 
 </section>
-
+ 
 <!-- ── ENSALADAS ── -->
 <section id="ensaladas" class="section">
-
+ 
 <div class="section-title">
 <h2>Ensaladas</h2>
 </div>
-
+ 
 <div class="grid">
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80" alt="Ensalada de Atún">
 <div class="content">
 <div class="top">
 <div class="name">Ensalada de Atún</div>
-<div class="price">5,80 €</div>
+<div class="price">6,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=1200&q=80" alt="Ensalada Griega">
 <div class="content">
 <div class="top">
 <div class="name">Ensalada Griega</div>
-<div class="price">8,10 €</div>
+<div class="price">9,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 </div>
 </section>
-
+ 
 <!-- ── COMBINADOS ── -->
 <section id="combinados" class="section">
-
+ 
 <div class="section-title">
 <h2>Platos Combinados</h2>
 </div>
-
+ 
 <div class="grid">
-
+ 
 <div class="card">
 <img src="images/tfrancesa.jpg" alt="Tortilla Francesa">
 <div class="content">
 <div class="top">
 <div class="name">Tortilla Francesa</div>
-<div class="price">7,30 €</div>
+<div class="price">8,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/calamaresromana.jpg" alt="Calamares a la Romana">
 <div class="content">
 <div class="top">
 <div class="name">Calamares a la Romana</div>
-<div class="price">11,10 €</div>
+<div class="price">12,30 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=1200&q=80" alt="Chipirones a la Plancha">
 <div class="content">
 <div class="top">
 <div class="name">Chipirones a la Plancha</div>
-<div class="price">15,50 €</div>
+<div class="price">17,00 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=1200&q=80" alt="Chipirones a la Andaluza">
 <div class="content">
 <div class="top">
 <div class="name">Chipirones a la Andaluza</div>
-<div class="price">13,30 €</div>
+<div class="price">15,00 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/pfrito.jpg" alt="Pollo">
 <div class="content">
 <div class="top">
 <div class="name">Pollo</div>
-<div class="price">8,20 €</div>
+<div class="price">9,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=1200&q=80" alt="Nuggets">
 <div class="content">
 <div class="top">
 <div class="name">Nuggets</div>
-<div class="price">9,20 €</div>
+<div class="price">11,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/lomo.jpg" alt="Lomo">
 <div class="content">
 <div class="top">
 <div class="name">Lomo</div>
-<div class="price">9,30 €</div>
+<div class="price">11,00 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/pinchomoruno.jpg" alt="Pinchos Morunos">
 <div class="content">
 <div class="top">
 <div class="name">Pinchos Morunos</div>
-<div class="price">9,80 €</div>
+<div class="price">12,00 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/psalchichas.jpg" alt="Salchicha">
 <div class="content">
 <div class="top">
 <div class="name">Salchicha</div>
-<div class="price">9,30 €</div>
+<div class="price">10,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/butifarra.jpg" alt="Butifarra">
 <div class="content">
 <div class="top">
 <div class="name">Butifarra</div>
-<div class="price">10,30 €</div>
+<div class="price">11,50 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/chistorra.jpg" alt="Chistorra">
 <div class="content">
 <div class="top">
 <div class="name">Chistorra</div>
-<div class="price">9,50 €</div>
+<div class="price">11,00 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&q=80" alt="Hamburguesa">
 <div class="content">
 <div class="top">
 <div class="name">Hamburguesa</div>
-<div class="price">12,30 €</div>
+<div class="price">14,00 €</div>
 </div>
 </div>
 </div>
-
+ 
+<div class="card">
+<img src="images/bocadillobacon.jpg" alt="Panceta">
+<div class="content">
+<div class="top">
+<div class="name">Panceta</div>
+<div class="price">12,50 €</div>
 </div>
-
+</div>
+</div>
+ 
+<div class="card">
+<img src="images/lomo.jpg" alt="Cabeza de Lomo">
+<div class="content">
+<div class="top">
+<div class="name">Cabeza de Lomo</div>
+<div class="price">14,50 €</div>
+</div>
+</div>
+</div>
+ 
+</div>
+ 
 <div class="note">
 <strong>Todos los platos llevan patatas fritas, huevo frito y ensalada.</strong><br>
 Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €</strong> · Pan Tomate: <strong>1,00 €</strong> · Pan Sin Gluten: <strong>1,50 €</strong>
 </div>
-
+ 
 </section>
-
+ 
 <!-- ── POSTRES ── -->
 <section id="postres" class="section">
-
+ 
 <div class="section-title">
 <h2>Postres</h2>
 </div>
-
+ 
 <div class="grid">
-
+ 
 <div class="card">
 <img src="images/tartasantiago.jpg" alt="Tarta Santiago">
 <div class="content">
 <div class="top">
 <div class="name">Tarta Santiago</div>
-<div class="price">3,00 €</div>
+<div class="price">2,90 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?w=1200&q=80" alt="Tarta Manzana">
 <div class="content">
 <div class="top">
 <div class="name">Tarta Manzana</div>
-<div class="price">3,00 €</div>
+<div class="price">2,90 €</div>
 </div>
 </div>
 </div>
-
+ 
 <div class="card">
 <img src="images/tartaqueso.jpg" alt="Tarta Queso">
 <div class="content">
 <div class="top">
 <div class="name">Tarta Queso</div>
-<div class="price">3,50 €</div>
+<div class="price">3,10 €</div>
 </div>
 </div>
 </div>
-
+ 
 </div>
 </section>
-
+ 
 <!-- ── BEBIDAS ── -->
 <section id="bebidas" class="section">
-
+ 
 <div class="section-title">
 <h2>Bebidas</h2>
 </div>
-
+ 
 <div class="subsection-title">Aguas y Refrescos</div>
 <div class="drink-list">
 <div class="drink-item">
@@ -948,21 +1008,13 @@ Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €
 </div>
 <div class="drink-item">
 <div class="drink-left">
-<div class="drink-name">Refrescos 0,2 l</div>
-<div class="drink-desc">Coca-Cola, Coca-Cola Zero Zero, Bitter Kass, Tónica, Zumos varios, Limonada Granini, Appletiser</div>
-</div>
-<div class="drink-dots"></div>
-<span class="drink-price">2,10 €</span>
-</div>
-<div class="drink-item">
-<div class="drink-left">
 <div class="drink-name">Red Bull</div>
 </div>
 <div class="drink-dots"></div>
 <span class="drink-price">3,10 €</span>
 </div>
 </div>
-
+ 
 <div class="subsection-title">Cervezas</div>
 <div class="drink-list">
 <div class="drink-item">
@@ -973,32 +1025,32 @@ Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">San Miguel 0,33 l</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">2,10 €</span>
+<span class="drink-price">2,20 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Estrella Damm (Quinto / Mediana)</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">1,90 € / 2,20 €</span>
+<span class="drink-price">1,90 € / 2,30 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Voll Damm 0,33 l</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">2,50 €</span>
+<span class="drink-price">2,60 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Alhambra 1925 0,33 l</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">2,40 €</span>
+<span class="drink-price">2,50 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">La Milnueve 1906 0,33 l</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">2,40 €</span>
+<span class="drink-price">2,50 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Heineken 0,33 l</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">2,40 €</span>
+<span class="drink-price">2,50 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Corona 0,33 l</div></div>
@@ -1008,29 +1060,59 @@ Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Daura Damm Gluten Free 0,33 l</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">2,40 €</span>
+<span class="drink-price">2,50 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Estrella Damm (Caña / Copa / Jarra)</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">1,80 € / 2,10 € / 3,50 €</span>
+<span class="drink-price">1,80 € / 2,20 € / 3,70 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Turia (Caña / Copa / Jarra)</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">1,90 € / 2,20 € / 3,60 €</span>
+<span class="drink-price">1,90 € / 2,30 € / 3,80 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Free Damm 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Free Damm Lemon 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Bohemia Damm 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">La Milnueve 1906 Vintage 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,80 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Sprite 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">2,30 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Stella Artois 0,33 l</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">3,50 €</span>
 </div>
 </div>
-
+ 
 </section>
-
+ 
 <!-- ── CAFÉS ── -->
 <section id="cafes" class="section">
-
+ 
 <div class="section-title">
 <h2>Cafés e Infusiones</h2>
 </div>
-
+ 
 <div class="drink-list">
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Café con Leche (Normal o Descafeinado)</div></div>
@@ -1055,7 +1137,7 @@ Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">ColaCao</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">1,80 €</span>
+<span class="drink-price">1,90 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Cacaolat</div></div>
@@ -1076,16 +1158,16 @@ Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €
 <span class="drink-price">+ 0,20 €</span>
 </div>
 </div>
-
+ 
 </section>
-
+ 
 <!-- ── COPAS ── -->
 <section id="copas" class="section">
-
+ 
 <div class="section-title">
 <h2>Combinados y Copas</h2>
 </div>
-
+ 
 <div class="drink-list">
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Chupito Sin Alcohol (Manzana)</div></div>
@@ -1125,19 +1207,44 @@ Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €
 <div class="drink-item">
 <div class="drink-left"><div class="drink-name">Tinto de Verano</div></div>
 <div class="drink-dots"></div>
-<span class="drink-price">3,00 €</span>
+<span class="drink-price">3,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Vermut Blanco (Copa)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">3,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Vermut Negro (Copa)</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">3,60 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Cubata Licor</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">7,00 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Cubata Whisky</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">7,50 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left"><div class="drink-name">Cubata + Red Bull</div></div>
+<div class="drink-dots"></div>
+<span class="drink-price">8,00 €</span>
 </div>
 </div>
-
+ 
 </section>
-
+ 
 <!-- ── VINOS ── -->
 <section id="vinos" class="section">
-
+ 
 <div class="section-title">
 <h2>Vinos y Cavas</h2>
 </div>
-
+ 
 <div class="drink-list">
 <div class="drink-item">
 <div class="drink-left">
@@ -1145,7 +1252,7 @@ Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €
 <div class="drink-desc">Botella / Copa</div>
 </div>
 <div class="drink-dots"></div>
-<span class="drink-price">11,50 € / 2,00 €</span>
+<span class="drink-price">12,00 € / 2,20 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left">
@@ -1153,7 +1260,7 @@ Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €
 <div class="drink-desc">Botella / Copa</div>
 </div>
 <div class="drink-dots"></div>
-<span class="drink-price">12,50 € / 2,10 €</span>
+<span class="drink-price">13,00 € / 2,30 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left">
@@ -1161,7 +1268,7 @@ Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €
 <div class="drink-desc">Botella / Copa</div>
 </div>
 <div class="drink-dots"></div>
-<span class="drink-price">15,00 € / 3,10 €</span>
+<span class="drink-price">20,00 € / 5,00 €</span>
 </div>
 <div class="drink-item">
 <div class="drink-left">
@@ -1187,12 +1294,28 @@ Suplementos — Bacon, Queso, Cebolla, Pimiento, Huevo, Tomate: <strong>0,70 €
 <div class="drink-dots"></div>
 <span class="drink-price">11,00 €</span>
 </div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Cava JP. Chenet</div>
+<div class="drink-desc">Botella / Copa</div>
 </div>
-
+<div class="drink-dots"></div>
+<span class="drink-price">21,00 € / 5,00 €</span>
+</div>
+<div class="drink-item">
+<div class="drink-left">
+<div class="drink-name">Vino Rioja 828</div>
+<div class="drink-desc">Botella / Copa</div>
+</div>
+<div class="drink-dots"></div>
+<span class="drink-price">12,50 € / 2,50 €</span>
+</div>
+</div>
+ 
 </section>
-
+ 
 </main>
-
+ 
 <footer class="footer">
 <h3>ATLAS</h3>
 <p>
@@ -1200,6 +1323,6 @@ Carrer de Mossèn Amadeu Amenós, 3, 08788 Vilanova del Camí, Barcelona<br>
 Reservas: +34 664 63 01 27<br>
 </p>
 </footer>
-
+ 
 </body>
 </html>
